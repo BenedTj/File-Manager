@@ -9,32 +9,20 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
 user_directory = pathlib.Path.home()
+
+# Example directory of the user
 directory_to_clean = "Downloads"
 
-make_others_files = False
+make_others_files = False 
 
+# Dictionary that controls what files to be made and how
 user_defined = {
+    # Example of the format
     ".docx": (
         "Documents",
         {
             "University": ("nus", "national university of singapore", "national_university_of_singapore", "nusc", "college"),
             "High School": ("mis", "manado independent school", "manado_independent_school", "sma"),
-        },
-        False
-    ),
-    ".xslx": (
-        "Excel",
-        {
-            "University": ("nus", "national university of singapore", "national_university_of_singapore", "nusc", "college"),
-            "High School": ("mis", "manado independent school", "manado_independent_school", "sma")
-        },
-        False
-    ),
-    ".pptx": (
-        "Powerpoint",
-        {
-            "University": ("nus", "national university of singapore", "national_university_of_singapore", "nusc", "college"),
-            "High School": ("mis", "manado independent school", "manado_independent_school", "sma")
         },
         False
     ),
@@ -86,17 +74,13 @@ class FileManagementProcess(FileSystemEventHandler):
 
 
     def on_modified(self, event):
-        print("Modified: 1")
         print(event.src_path)
         if not any([event.src_path.endswith(file_type) for file_type in user_defined]):
             return
-        print("Modified: 2")
         with os.scandir(final_directory) as entries:
             for entry in entries:
-                print("Modified: 3", entry.name)
                 if entry.is_file() and not entry.name.startswith("."):
                     self.assign_folder(entry.path)
-        print("Modified: 4")
         print(event)
                     
 
