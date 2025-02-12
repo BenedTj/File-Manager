@@ -12,7 +12,7 @@ Additionally, the 'user_directory' variable may be changed in order to give more
 3. The third and final element is a boolean that specifies whether file names not captured by the keywords found within the second element should be stored in another directory labelled as *Others* or be left untouched.
 
 As an example, if we would like to capture all Microsoft Document files within a directory labelled as *Documents* with subdirectories *University* and *High School* and not having an *Others* directory for the Microsoft Document files not captured by the keywords specified for each subdirectory, we would specify the `user_defined` variable as follows:
-```
+```python
 # Dictionary that controls what files to be made and how
 user_defined = {
     ".docx": ( # file extension of the type of file to be captured.
