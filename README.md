@@ -5,7 +5,44 @@ Python file managemenet script built using Python built-in modules and watchdog 
 
 Additionally, the 'user_directory' variable may be changed in order to give more flexibility in terms of the parent path where the script operates.
 
-## 2. `user_defined` convention
+## 2. To try File-Manager
+1. Pull from the github repository
+```
+git init .
+git remote add origin
+git pull origin main
+```
+2. Navigate to the directory where `.git` is located, ensure Python is installed on your local computer and install dependencies with pip
+```
+pip install -r requirements.txt
+```
+3. Navigate to `FileManager.py` and change variables based on your desired outcome
+```python
+user_directory = pathlib.Path.home() # the directory where directory_to_clean is located. By default it is set to the 'Home' directory
+
+directory_to_clean = "Downloads" # the name of the directory to be cleaned
+
+make_others_files = False # boolean variable controlling whether files of a certain file type (file extension) that is not found in user_defined should also be sorted into an 'Others' file
+
+# Dictionary that controls what files to be made. For the convention, refer to the '3. user_defined convention' section below
+user_defined = {
+    # Example of the format
+    ".docx": (
+        "Documents",
+        {
+            "University": ("nus", "national university of singapore", "national_university_of_singapore", "nusc", "college"),
+            "High School": ("mis", "manado independent school", "manado_independent_school", "sma"),
+        },
+        False
+    ),
+}
+```
+5. Navigate to the path where `.git` is located and run the script
+```
+python FileManager.py
+```
+
+## 3. `user_defined` convention
 `user_defined` is written as a Python dictionary which stores keys referring to the file extension to be captured. The value stored within this dictionary is a tuple with a size of 3.
 1. The first element is a String that stores the name of the directory name that we want to put all files with the specified file extension in.
 2. The second element is a Python dictionary with the keys being the subdirectory name for a certain subset of files whose file names contain the keywords specified in the tuple that is stored within the value associated with the key.
@@ -28,5 +65,5 @@ user_defined = {
 }
 ```
 
-## 3. Dependencies
+## 4. Dependencies
 The only dependency not included within the built-in Python modules that this script relies on is [watchdog](https://python-watchdog.readthedocs.io/en/stable/index.html) 6.0.0. For further information, **requirements.txt** can be consulted
