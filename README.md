@@ -6,6 +6,7 @@ Python file managemenet script built using Python built-in modules and watchdog 
 Additionally, the 'user_directory' variable may be changed in order to give more flexibility in terms of the parent path where the script operates.
 
 ## 2. To try File-Manager
+*Caution*: Please ensure that essential and important files are not included in or within proximity of directory to be tried on to prevent loss of essential files.
 1. Pull from the github repository
 ```
 git init .
