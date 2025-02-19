@@ -89,7 +89,6 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO,
                         format='%(asctime)s - %(message)s',
                         datefmt='%Y-%m-%d %H:%M:%S')
-    path = final_directory
     event_handler = FileManagementProcess()
     observer = Observer()
     observer.schedule(event_handler, final_directory, recursive=True)
